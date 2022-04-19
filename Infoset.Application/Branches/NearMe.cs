@@ -45,7 +45,10 @@ namespace Infoset.Application.Branches
         public static double Distance(Location location1, Location location2)
         {
             var p = Math.PI/180;///0.0174532925199433;
-            //Haversine formula
+            /*  
+             *  Haversine formula
+             *  https://en.wikipedia.org/wiki/Haversine_formula
+            */
             var hav = 0.5 - Math.Cos((location2.Latitude - location1.Latitude) * p) / 2 + Math.Cos(location1.Latitude * p) * Math.Cos(location2.Latitude * p) * (1 - Math.Cos((location2.Longitude - location1.Longitude) * p)) / 2;
             return 12742 * Math.Asin(Math.Sqrt(hav));
         }
