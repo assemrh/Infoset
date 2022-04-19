@@ -15,7 +15,8 @@ namespace Infoset.API.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetClosetBranches()
         {
-            var _params = new BrancheParams { Distance = 1, CurrentLocation = new Location() { Latitude = 0, Longitude = 0 } };
+            //40.982468121810626, 28.872966419154096
+            var _params = new BrancheParams { Distance = 10, CurrentLocation = new Location() { Latitude = 40.982468121810626, Longitude = 28.872966419154096 } };
             return HandleResult(await Mediator.Send(new NearMe.Query() { Params = _params }));
         }
     }
