@@ -36,6 +36,8 @@ namespace Infoset.Application.Branches
                     if (Distance(currentLocation, temp) <= request.Params.Distance)
                     {
                         branchesNearMe.Add(branch);
+                        if (branchesNearMe.Count >= 5)
+                            break;
                     }
                 }
                 // branches.Where(p => Distance(currentLocation, new Location { Latitude = p.Latitude, Longitude = p.Longitude }) > request.Params.Distance).ToList();
