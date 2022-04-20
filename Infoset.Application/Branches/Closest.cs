@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Infoset.Application.Branches
 {
-    public class NearMe
+    public class Closest
     {
         public class Query : IRequest<Result<List<Branche>>>
         {
@@ -17,8 +17,8 @@ namespace Infoset.Application.Branches
         public class Handler : IRequestHandler<Query, Result<List<Branche>>>
         {
             private readonly DataContext _context;
-            private readonly ILogger<NearMe> logger;
-            public Handler(DataContext context, ILogger<NearMe> logger)
+            private readonly ILogger<Closest> logger;
+            public Handler(DataContext context, ILogger<Closest> logger)
             {
                 _context = context;
                 this.logger = logger;
@@ -42,7 +42,7 @@ namespace Infoset.Application.Branches
                 return Result<List<Branche>>.Success(branchesNearMe);
             }
         }
-        public static double Distance(Location location1, Location location2)
+        private static double Distance(Location location1, Location location2)
         {
             var p = Math.PI/180;///0.0174532925199433;
             /*  

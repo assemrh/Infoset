@@ -6,7 +6,11 @@ namespace Infoset.Persistence
     public class DataContext : DbContext
     {
         public DataContext(DbContextOptions<DataContext> options)
-           : base(options) { }
+           : base(options) 
+        {
+            //Database..SetInitializer<DataContext>(new CreateDatabaseIfNotExists<DataContext>());
+
+        }
         public DbSet<Branche> Branches { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
