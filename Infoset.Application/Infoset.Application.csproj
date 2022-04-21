@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Infoset.Domain\Infoset.Domain.csproj" />
-    <ProjectReference Include="..\Infoset.Persistence\Infoset.Persistence.csproj" />
+    <ProjectReference Include="..\Infoset.Infrastructure\Infoset.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

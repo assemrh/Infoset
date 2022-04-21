@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infoset.API", "Infoset.API\Infoset.API.csproj", "{3230A17E-121E-4332-9664-0025BAF44AB5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infoset.API", "Infoset.API\Infoset.API.csproj", "{3230A17E-121E-4332-9664-0025BAF44AB5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infoset.Domain", "Infoset.Domain\Infoset.Domain.csproj", "{B9D887F1-004E-4BB4-A80A-E4BB8A037919}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infoset.Domain", "Infoset.Domain\Infoset.Domain.csproj", "{B9D887F1-004E-4BB4-A80A-E4BB8A037919}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infoset.Persistence", "Infoset.Persistence\Infoset.Persistence.csproj", "{9D846237-5AD9-4818-BF47-1760900636E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infoset.Infrastructure", "Infoset.Infrastructure\Infoset.Infrastructure.csproj", "{9D846237-5AD9-4818-BF47-1760900636E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infoset.Application", "Infoset.Application\Infoset.Application.csproj", "{9BA502E6-19DF-4723-8AD9-C1705AD86383}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infoset.Application", "Infoset.Application\Infoset.Application.csproj", "{9BA502E6-19DF-4723-8AD9-C1705AD86383}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

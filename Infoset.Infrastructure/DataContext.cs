@@ -1,7 +1,7 @@
 ﻿using Infoset.Domain;
 using Microsoft.EntityFrameworkCore;
 
-namespace Infoset.Persistence
+namespace Infoset.Infrastructure
 {
     public class DataContext : DbContext
     {

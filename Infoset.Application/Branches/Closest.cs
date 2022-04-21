@@ -1,9 +1,10 @@
 ﻿using Infoset.Application.Core;
 using Infoset.Domain;
-using Infoset.Persistence;
+using Infoset.Infrastructure;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using MySqlConnector;
 
 namespace Infoset.Application.Branches
 {
@@ -28,23 +29,42 @@ namespace Infoset.Application.Branches
             {
                 List<Branche> branchesNearMe = new List<Branche>();
                 var currentLocation = request.Params.CurrentLocation;
-                var branches = await _context.Branches.ToListAsync();
+                var p = Math.PI / 180;///0.0174532925199433;
+                var sqlQuery = @"
+                            select * ,
+                              12742 * ASIN(SQRT(0.5 - COS((b.latitude - @latitude1) * @p) / 2 + COS(@latitude1 * @p) * COS(b.latitude * @p) * (1 - COS((b.longitude - @longitude1) * @p)) / 2)) as  distance
+                            from Branches as b 
+                            HAVING
+	                             distance < @maxDistance
+                            ORDER By distance
+                        ";
+                branchesNearMe = await _context
+                    .Branches
+                    .FromSqlRaw(sqlQuery,
+                    new MySqlParameter("@latitude1", currentLocation.Latitude),
+                    new MySqlParameter("@longitude1", currentLocation.Longitude),
+                    new MySqlParameter("@maxDistance", request.Params.MaxDistance),
+                    new MySqlParameter("@p", p)
+                    ).Take(request.Params.Count)
+                    .ToListAsync();
+                /*
+                 var branches = await _context.Branches.ToListAsync();
                 foreach (var branch in branches)
                 {
-                    var temp= new Location { Latitude = branch.Latitude, Longitude = branch.Longitude };
-                    logger.LogInformation($"Distance is {Distance(currentLocation, temp)}");
-                    if (Distance(currentLocation, temp) <= request.Params.Distance)
+                    var temp = new Location { Latitude = branch.Latitude, Longitude = branch.Longitude };
+                    //logger.LogInformation($"Distance is {Distance(currentLocation, temp)}");
+                    if (CalculateDistance(currentLocation, temp) <= request.Params.MaxDistance)
                     {
                         branchesNearMe.Add(branch);
-                        if (branchesNearMe.Count >= 5)
+                        if (branchesNearMe.Count >= request.Params.Count)
                             break;
                     }
                 }
-                // branches.Where(p => Distance(currentLocation, new Location { Latitude = p.Latitude, Longitude = p.Longitude }) > request.Params.Distance).ToList();
+                */
                 return Result<List<Branche>>.Success(branchesNearMe);
             }
         }
-        private static double Distance(Location location1, Location location2)
+        public static double CalculateDistance(Location location1, Location location2)
         {
             var p = Math.PI/180;///0.0174532925199433;
             /*  

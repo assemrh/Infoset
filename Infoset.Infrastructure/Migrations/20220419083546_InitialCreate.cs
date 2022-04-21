@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Infoset.Persistence.Migrations
+namespace Infoset.Infrastructure.Migrations
 {
     public partial class InitialCreate : Migration
     {

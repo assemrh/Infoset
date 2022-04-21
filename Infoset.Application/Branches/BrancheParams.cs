@@ -10,13 +10,13 @@ namespace Infoset.Application.Branches
     public class BrancheParams
     {
         /// <summary>
-        /// km
+        /// Max distance in km
         /// </summary>
-        public int Distance { get; set; } = 10;
+        public int MaxDistance { get; set; } = 10;
         /// <summary>
-        /// number of item 
+        /// number of items 
         /// </summary>
-        private int Count { get; set; } = 5;
+        public int Count { get; set; } = 5;
         public Location CurrentLocation { get; set; }
     }
 

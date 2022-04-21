@@ -1,5 +1,5 @@
 using Infoset.API.Extensions;
-using Infoset.Persistence;
+using Infoset.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
