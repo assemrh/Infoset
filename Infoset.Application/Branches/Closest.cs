@@ -44,18 +44,20 @@ namespace Infoset.Application.Branches
                     new MySqlParameter("@p", p)
                     ).Take(request.Params.Count)
                     .ToListAsync();
-                //var branches = await _context.Branches.ToListAsync();
-                //foreach (var branch in branches)
-                //{
-                //    var temp= new Location { Latitude = branch.Latitude, Longitude = branch.Longitude };
-                //    //logger.LogInformation($"Distance is {Distance(currentLocation, temp)}");
-                //    if (CalculateDistance(currentLocation, temp) <= request.Params.MaxDistance)
-                //    {
-                //        branchesNearMe.Add(branch);
-                //        if (branchesNearMe.Count >= request.Params.Count)
-                //            break;
-                //    }
-                //}
+                /*
+                 var branches = await _context.Branches.ToListAsync();
+                foreach (var branch in branches)
+                {
+                    var temp = new Location { Latitude = branch.Latitude, Longitude = branch.Longitude };
+                    //logger.LogInformation($"Distance is {Distance(currentLocation, temp)}");
+                    if (CalculateDistance(currentLocation, temp) <= request.Params.MaxDistance)
+                    {
+                        branchesNearMe.Add(branch);
+                        if (branchesNearMe.Count >= request.Params.Count)
+                            break;
+                    }
+                }
+                */
                 return Result<List<Branche>>.Success(branchesNearMe);
             }
         }
