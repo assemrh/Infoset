@@ -31,9 +31,12 @@ namespace Infoset.Application.Branches
                 var currentLocation = request.Params.CurrentLocation;
                 var p = Math.PI / 180;///0.0174532925199433;
                 var sqlQuery = @"
-                            select * 
+                            select * ,
+                              12742 * ASIN(SQRT(0.5 - COS((b.latitude - @latitude1) * @p) / 2 + COS(@latitude1 * @p) * COS(b.latitude * @p) * (1 - COS((b.longitude - @longitude1) * @p)) / 2)) as  distance
                             from Branches as b 
-                            where (12742 * ASIN(SQRT(0.5 - COS((b.latitude - @latitude1) * @p) / 2 + COS(@latitude1 * @p) * COS(b.latitude * @p) * (1 - COS((b.longitude - @longitude1) * @p)) / 2))) < @maxDistance
+                            HAVING
+	                             distance < @maxDistance
+                            ORDER By distance
                         ";
                 branchesNearMe = await _context
                     .Branches

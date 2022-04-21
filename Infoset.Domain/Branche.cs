@@ -14,4 +14,8 @@ namespace Infoset.Domain
         public double Latitude { get; set; }
         public double Longitude { get; set; }
     }
+    public class BrancheDto : Branche
+    {
+        public double Distance { get; set; }
+    }
 }
