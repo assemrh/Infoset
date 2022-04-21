@@ -1,6 +1,6 @@
 ﻿using Infoset.Application.Branches;
 using Infoset.Application.Core;
-using Infoset.Persistence;
+using Infoset.Infrastructure;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;

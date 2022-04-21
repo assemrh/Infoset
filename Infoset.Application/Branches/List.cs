@@ -1,6 +1,6 @@
 ﻿using Infoset.Application.Core;
 using Infoset.Domain;
-using Infoset.Persistence;
+using Infoset.Infrastructure;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;

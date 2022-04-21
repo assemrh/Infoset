@@ -12,12 +12,12 @@ namespace Infoset.API.Controllers
 
             return HandleResult(await Mediator.Send(new List.Query(), cancellationToken));
         }
-        [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetClosetBranches()
+        [HttpGet("Closest")]
+        public async Task<IActionResult> GetClosetBranches(double latitude , double longitude, int maxDistance = 10)
         {
             //40.982468121810626, 28.872966419154096
-            var _params = new BrancheParams { Distance = 10, CurrentLocation = new Location() { Latitude = 40.982468121810626, Longitude = 28.872966419154096 } };
-            return HandleResult(await Mediator.Send(new NearMe.Query() { Params = _params }));
+            var _params = new BrancheParams { MaxDistance = maxDistance, CurrentLocation = new Location() { Latitude = latitude, Longitude = longitude } };
+            return HandleResult(await Mediator.Send(new Closest.Query() { Params = _params }));
         }
     }
 }

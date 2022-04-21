@@ -1,6 +1,6 @@
 ﻿using Infoset.Domain;
 
-namespace Infoset.Persistence
+namespace Infoset.Infrastructure
 {
     public class Seed
     {
